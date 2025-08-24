@@ -89,6 +89,6 @@ class UdpService {
         port: Port(_targetPort),
       ),
     );
-    print('Sent: $msg');
+    // print('Sent: $msg');
   }
 }
