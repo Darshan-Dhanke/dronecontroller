@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
       setState(() => wifiConnected = connected);
 
       if (connected) {
+        _udpService.stop();
         await _udpService.init();
         _udpService.start();
       } else {
@@ -60,6 +61,7 @@ class _HomePageState extends State<HomePage> {
     setState(() => wifiConnected = connected);
 
     if (connected) {
+      _udpService.stop();
       await _udpService.init();
       _udpService.start();
     } else {

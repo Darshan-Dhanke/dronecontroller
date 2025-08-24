@@ -32,8 +32,6 @@ class UdpService {
 
   Future<void> dispose() async {
     stop();
-    _udp?.close();
-    _udp = null;
   }
 
   void start() {
@@ -46,6 +44,10 @@ class UdpService {
   void stop() {
     _timer?.cancel();
     _timer = null;
+    try {
+      _udp?.close();
+    } catch (_) {}
+    _udp = null;
   }
 
   void setTarget({required String ip, required int port}) {
@@ -87,5 +89,6 @@ class UdpService {
         port: Port(_targetPort),
       ),
     );
+    print('Sent: $msg');
   }
 }
